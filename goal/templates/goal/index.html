@@ -1,0 +1,12 @@
+{% if goal %}
+    
+    <h2>This is your goal</h2>
+    <div>
+        {{ goal.name }} of {{ goal.year }}
+    </div>
+
+{% else %}
+
+    <h2> No goal found </h2> 
+
+{% endif %}
