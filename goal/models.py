@@ -10,6 +10,7 @@ class Entry(models.Model):
     entry_date = models.DateTimeField('date of entry')
     description = models.TextField()
     goal = models.ForeignKey(Goal)
+    hours_worked = models.IntegerField()
     def __str__(self):
         return self.description
 

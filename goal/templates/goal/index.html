@@ -3,10 +3,27 @@
     <h2>This is your goal</h2>
     <div>
         {{ goal.name }} of {{ goal.year }}
-    </div>
+    </div><br />
+
+    <form method="post" action="{% url 'goal:log' goal.id %}">
+        {% csrf_token %}
+        <label>What you did to reach your goal today? Any other thoughts?</label> <br />
+        <textarea name="log"></textarea> <br />
+        <label>How many hours did you work on yout goal today?</label> <br />
+        <input type="text" name="hours_worked" /> <br />
+        <input type="submit" value="Log entry" />
+    </form>
 
 {% else %}
 
-    <h2> No goal found </h2> 
+    <h2> You have no goals defined! Create one now! </h2>
+    <form method="post" action="{% url 'goal:new_goal' %}">
+        {% csrf_token %}
+        <label>What's your goal?</label>
+        <input type="text" name="goal_name" /> </br>
+        <label>What year are you working on this?</label>
+        <input type="text" name="goal_year" /> </br>
+        <input type="submit" value="Set Goal" />
+    </form>
 
 {% endif %}
