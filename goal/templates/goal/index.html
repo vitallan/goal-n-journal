@@ -1,5 +1,5 @@
-{% if goal %}
-    
+{% extends 'goal/base.html' %}
+{% block content %}
     <h2>This is your goal</h2>
     <div>
         {{ goal.name }} of {{ goal.year }}
@@ -13,17 +13,4 @@
         <input type="text" name="hours_worked" /> <br />
         <input type="submit" value="Log entry" />
     </form>
-
-{% else %}
-
-    <h2> You have no goals defined! Create one now! </h2>
-    <form method="post" action="{% url 'goal:new_goal' %}">
-        {% csrf_token %}
-        <label>What's your goal?</label>
-        <input type="text" name="goal_name" /> </br>
-        <label>What year are you working on this?</label>
-        <input type="text" name="goal_year" /> </br>
-        <input type="submit" value="Set Goal" />
-    </form>
-
-{% endif %}
+{% endblock %}

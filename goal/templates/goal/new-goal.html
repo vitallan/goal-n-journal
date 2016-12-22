@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2> You have no goals defined! Create one now! </h2>
+    <form method="post" action="{% url 'goal:new_goal' %}">
+        {% csrf_token %}
+        <label>What's your goal?</label>
+        <input type="text" name="goal_name" /> </br>
+        <label>What year are you working on this?</label>
+        <input type="text" name="goal_year" /> </br>
+        <input type="submit" value="Set Goal" />
+    </form>
+{% endblock %}
