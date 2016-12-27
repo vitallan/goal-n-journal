@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% url 'goal:index' as index %}
+{% url 'goal:new_goal' as new_goal %}
 <html>
     <head>
         <title>Goal'n Jornal</title>
@@ -6,7 +8,21 @@
 		<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min' %}">
     </head>
     <body>
-        <div id="content">
+        <div id="content" class="container">
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{% url 'goal:index' %}">Goal'n Journal</a>
+                        
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                          <ul class="nav navbar-nav">
+                            <li {% if request.get_full_path == new_goal %}class="active"{% endif %}><a href="{% url 'goal:new_goal' %}">New Goal </a></li>
+                            <li {% if request.get_full_path == index %}class="active"{% endif %}><a href="{% url 'goal:index' %}">Journal</a></li>
+                          </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
 			{% block content %}{% endblock %}
 		</div>
     </body>

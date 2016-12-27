@@ -1,16 +1,40 @@
 {% extends 'goal/base.html' %}
 {% block content %}
-    <h2>This is your goal</h2>
-    <div>
-        {{ goal.name }} of {{ goal.year }}
-    </div><br />
-
-    <form method="post" action="{% url 'goal:log' goal.id %}">
+<div class="row">
+    <div class="page-header">
+        <h2>This is your goal: {{ goal.name }} of {{ goal.year }}</h2>
+    </div>
+</div>
+<div class="row">
+    <form class="form-horizontal" method="post" action="{% url 'goal:log' goal.id %}">
         {% csrf_token %}
-        <label>What you did to reach your goal today? Any other thoughts?</label> <br />
-        <textarea name="log"></textarea> <br />
-        <label>How many hours did you work on yout goal today?</label> <br />
-        <input type="text" name="hours_worked" /> <br />
-        <input type="submit" value="Log entry" />
+        <div class="form-group">
+            <label for="log" class="col-lg-3 control-label">What you did to reach your goal today? Any other thoughts?</label>
+            <div class="col-lg-9">
+                <textarea id="log" class="form-control" name="log"></textarea> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hours-worked" class="col-lg-3 control-label">How many hours did you work on your goal today?</label> 
+            <div class="col-lg-9">
+                <input type="text" class="form-control" id="hours-worked" name="hours-worked" /> 
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-11">
+                <input type="submit" class="btn btn-primary" value="Log entry" />
+            </div>
+        </div>
     </form>
+</div>
+<div class="row">
+    <div class="list-group">
+            {% for entry in entries %}
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">In {{ entry.entry_date|date:'d/m/Y' }} I worked {{ entry.hours_worked }} hour(s) towards my goal</h4>
+                    <p class="list-group-item-text">{{ entry.description }}</p>
+                </a>
+            {% endfor %}
+    </div>
+</div>
 {% endblock %}

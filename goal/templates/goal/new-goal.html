@@ -1,12 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'goal/base.html' %}
 {% block content %}
-    <h2> You have no goals defined! Create one now! </h2>
-    <form method="post" action="{% url 'goal:new_goal' %}">
-        {% csrf_token %}
-        <label>What's your goal?</label>
-        <input type="text" name="goal_name" /> </br>
-        <label>What year are you working on this?</label>
-        <input type="text" name="goal_year" /> </br>
-        <input type="submit" value="Set Goal" />
-    </form>
+<div class="page-header">
+	<h2> 
+		{% if simple_new == True %}
+			Register a new goal!
+		{% else %}
+			You have no goals defined! Create one now! 
+		{% endif %}
+	</h2>
+</div>
+<form class="form-horizontal" method="post" action="{% url 'goal:new_goal' %}">
+	<fieldset>
+		<div class="form-group">
+	        {% csrf_token %}
+	        <label for="goal-name" class="col-lg-3 control-label">What's your goal?</label>
+	        <div class="col-lg-9">
+	        	<input type="text" class="form-control"  id="goal-name" name="goal-name" />
+	        </div>
+	    </div>
+	    <div class="form-group">
+	        <label for="goal-year" class="col-lg-3 control-label">What year are you working on this?</label>
+	        <div class="col-lg-9">
+	        	<input type="text" class="form-control" id="goal-year" name="goal-year" />
+	        </div>
+	    </div>
+	    <div class="form-group">
+	    	<div class="col-lg-offset-11">
+	    		<input type="submit" class="btn btn-primary" value="Set Goal" />
+	    	</div>
+	    </div>
+    </fieldset>
+</form>
 {% endblock %}
