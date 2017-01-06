@@ -29,8 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SOCIAL_AUTH_USER_MODEL = 'goal.User'
-
 # Application definition
 
 INSTALLED_APPS = [
