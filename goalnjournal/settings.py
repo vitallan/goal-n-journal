@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOAuth2',
 )
 
 MIDDLEWARE = [
