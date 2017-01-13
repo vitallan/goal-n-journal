@@ -1,0 +1,30 @@
+{% extends 'goal/base.html' %}
+{% block content %}
+{% load staticfiles %}
+<div class="row" style="margin-bottom:10px;">
+	<div>
+		<h2>Keep your goals clear, and log the steps towards it</h2>
+	</div>
+</div>
+<div class="row container">
+	<div class="col-lg-8">
+		<p>The benefits of keeping a journal are <a href="http://lifehacker.com/why-you-should-keep-a-journal-and-how-to-start-yours-1547057185">many</a>, and you can <a href="http://psychcentral.com/lib/the-health-benefits-of-journaling/">find</a> this affirmative <a href="http://lifehacker.com/5877106/keep-a-journal-of-awesomeness-to-boost-your-self-esteem">anywhere</a> </p>
+		<p>This site helps you tracking your goal. When you log in, it's required to state your goal and your year.</p>
+		<p>After this, it's up to you. Enter and log how was your day and how many hours on that day you spent on your goal.</p>
+		<p>Why we ask how many hours? <a href="http://www.cracked.com/quick-fixes/the-60-second-guide-to-bullshit-free-life/">Because you need to spend time on what you want to accomplish</a></p>
+		<p>Important: We do not ask your password. The current login options are Twitter or Google. Safe and sound.</p>
+		<div>
+			<p>
+				<a href="/login/twitter"><img src="{% static 'img/sign-in-twitter.png' %}" alt="Sign in with Twitter" /></a>
+			</p>
+			<p>
+				<a href="/login/google-oauth2"><img src="{% static 'img/sign-in-google.png' %}" alt="Sign in with Google" /></a>
+			</p>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<img src="{% static 'img/rsz_diary.jpg' %}" alt="Image of diary" />
+	</div>
+</div>
+
+{% endblock %}
