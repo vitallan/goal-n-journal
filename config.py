@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'iw0ka-6rt68=^ytq66@ub$y9fjk5v7u-e6u=wttyh5ju$&7w8q'
+SECRET_KEY = 'secret'
 
 DATABASES = {
     'default': {
