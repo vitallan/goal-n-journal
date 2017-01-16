@@ -7,6 +7,8 @@
         <title>Goal'n Jornal</title>
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-32x32.png' %}">
     </head>
     <body style="padding-bottom:50px">
         <div id="content" class="container">
@@ -14,14 +16,15 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="{% url 'goal:home' %}">Goal'n Journal</a>
-                        
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                          <ul class="nav navbar-nav col-lg-10">
-                            <li {% if request.get_full_path == new_goal %}class="active"{% endif %}><a href="{% url 'goal:new_goal' %}">New Goal </a></li>
-                            <li {% if request.get_full_path == index %}class="active"{% endif %}><a href="{% url 'goal:index' %}">Journal</a></li>
-                            <li class="right"><a class="danger" href="{% url 'goal:logout' %}">Logout</a></li>
-                          </ul>
-                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                              <ul class="nav navbar-nav col-lg-10">
+                                <li {% if request.get_full_path == new_goal %}class="active"{% endif %}><a href="{% url 'goal:new_goal' %}">New Goal </a></li>
+                                <li {% if request.get_full_path == index %}class="active"{% endif %}><a href="{% url 'goal:index' %}">Journal</a></li>
+                                <li class="right"><a class="danger" href="{% url 'goal:logout' %}">Logout</a></li>
+                              </ul>
+                            </div>
+                        {% endif %}
                     </div>
                 </nav>
             </div>
