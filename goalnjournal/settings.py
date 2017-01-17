@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 from config import *
 
-ALLOWED_HOSTS = []
-
 # Application definition
 
 INSTALLED_APPS = [
