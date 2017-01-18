@@ -5,13 +5,13 @@ ADD * goalnjournal/
 WORKDIR "goalnjournal"
 
 RUN rm -f config.py
-RUN mkdir live_conf
-VOLUME ["/goalnjournal/live_conf"]
+RUN mv live-conf/config.py .
 
 RUN pip -v install gunicorn
 
 RUN pip install -r requirements.txt
 
-VOLUME
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "goalnjournal.wsgi:application"]
