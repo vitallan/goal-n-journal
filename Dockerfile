@@ -15,8 +15,8 @@ RUN pip install PyMySQL
 
 RUN ["chmod", "+x", "entrypoint.sh"]
 
-RUN apt-get update
-RUN apt-get install nginx
+RUN apt-get -y update
+RUN apt-get -y install nginx
 RUN cp nginx.conf /etc/nginx/sites-available/default
 RUN /etc/init.d/nginx start
 
