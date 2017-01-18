@@ -7,7 +7,7 @@ WORKDIR "goalnjournal"
 RUN mkdir live_conf
 VOLUME ["/goalnjournal/live_conf"]
 
-RUN pip -v install gunicorn
+RUN pip install gunicorn
 
 RUN pip install -r requirements.txt
 
