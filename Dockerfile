@@ -7,7 +7,8 @@ WORKDIR "goalnjournal"
 RUN mkdir live_conf
 VOLUME ["/goalnjournal/live_conf"]
 
-VOLUME "/goalnjournal/goal/static"
+RUN mkdir static
+VOLUME ["/goalnjournal/static"]
 
 RUN pip install gunicorn
 
